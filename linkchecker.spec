@@ -1,17 +1,18 @@
 Summary:	Check HTML documents for broken links
+Summary(pl):	Sprawdzanie dokumentów HTML pod k±tem zerwanych odno¶ników
 Name:		linkchecker
 Version:	1.12.3
 Release:	1
-Source0:	http://dl.sourceforge.net/linkchecker/%{name}-%{version}.tar.gz
-# Source0-md5:	6a40d830781507fc6b70d3f2d4d381ec
 License:	GPL
 Group:		Applications/Networking
+Source0:	http://dl.sourceforge.net/linkchecker/%{name}-%{version}.tar.gz
+# Source0-md5:	6a40d830781507fc6b70d3f2d4d381ec
+URL:		http://linkchecker.sourceforge.net/
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-Url:		http://linkchecker.sourceforge.net/
 
 %description
-Linkchecker features
+Linkchecker features:
 - recursive checking
 - multithreading
 - output in colored or normal text, HTML, SQL, CSV or a sitemap graph
@@ -28,6 +29,24 @@ Linkchecker features
 - a command line interface
 - a (Fast)CGI web interface (requires HTTP server)
 
+%description -l pl
+Cechy linkcheckera:
+- sprawdzanie rekurencyjne
+- wielow±tkowo¶æ
+- wyj¶cie w kolorowanym lub zwyk³ym tek¶cie, HTML-u, SQL-u, CSV lub
+  jako mapa serwisu w GML-u lub XML-u
+- obs³uga odno¶ników HTTP/1.1, HTTPS, FTP, mailto:, news:, nntp:,
+  Gopher, Telnet i lokalnych plików
+- restrykcje sprawdzania odno¶ników przy pomocy filtrów URL-i opartych
+  o wyra¿enia regularne
+- obs³uga proxy
+- autoryzacja u¿ytkownik/has³o dla HTTP i FTP
+- obs³uga protoko³u wy³±czeñ robots.txt
+- obs³uga ciasteczek
+- obs³uga wielu jêzyków (i18n)
+- interfejs z linii poleceñ
+- interfejs WWW (Fast)CGI (wymagaj±cy serwera HTTP)
+
 %prep
 %setup -q
 
@@ -36,14 +55,20 @@ env CFLAGS="%{rpmcflags}" python setup.py build
 
 %install
 rm -rf $RPM_BUILD_ROOT
-python setup.py install --root=$RPM_BUILD_ROOT --record=INSTALLED_FILES
+
+python setup.py install \
+	--root=$RPM_BUILD_ROOT \
+	--record=INSTALLED_FILES
+
+%find_lang linkcheck
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%files
+%files -f linkcheck.lang
 %defattr(644,root,root,755)
 %doc INSTALL README TODO lconline/ test/
+%dir %{py_sitedir}/linkcheck
 %{py_sitedir}/_linkchecker_configdata.py
 %{py_sitedir}/linkcheck/AnsiColor.py
 %{py_sitedir}/linkcheck/Config.py
@@ -78,6 +103,7 @@ rm -rf $RPM_BUILD_ROOT
 %{py_sitedir}/linkcheck/test_support.py
 %{py_sitedir}/linkcheck/url.py
 %{py_sitedir}/linkcheck/util1.py
+%dir %{py_sitedir}/linkcheck/log
 %{py_sitedir}/linkcheck/log/BlacklistLogger.py
 %{py_sitedir}/linkcheck/log/CSVLogger.py
 %{py_sitedir}/linkcheck/log/ColoredLogger.py
@@ -89,8 +115,10 @@ rm -rf $RPM_BUILD_ROOT
 %{py_sitedir}/linkcheck/log/StandardLogger.py
 %{py_sitedir}/linkcheck/log/XMLLogger.py
 %{py_sitedir}/linkcheck/log/__init__.py
+%dir %{py_sitedir}/linkcheck/parser
 %{py_sitedir}/linkcheck/parser/__init__.py
 %{py_sitedir}/linkcheck/parser/htmllib.py
+%dir %{py_sitedir}/linkcheck/DNS
 %{py_sitedir}/linkcheck/DNS/Base.py
 %{py_sitedir}/linkcheck/DNS/Class.py
 %{py_sitedir}/linkcheck/DNS/Lib.py
@@ -156,17 +184,17 @@ rm -rf $RPM_BUILD_ROOT
 %{py_sitedir}/linkcheck/DNS/__init__.pyc
 %{py_sitedir}/linkcheck/DNS/lazy.pyc
 %{py_sitedir}/linkcheck/DNS/winreg.pyc
-%{py_sitedir}/linkcheck/parser/htmlsax.so
+%dir %{py_sitedir}/linkcheck/parser
+%attr(755,root,root) %{py_sitedir}/linkcheck/parser/htmlsax.so
 %attr(755,root,root) %{_bindir}/linkchecker
-%{_datadir}/locale/de/LC_MESSAGES/linkcheck.mo
-%{_datadir}/locale/fr/LC_MESSAGES/linkcheck.mo
-%{_datadir}/locale/nl/LC_MESSAGES/linkcheck.mo
+%dir %{_datadir}/linkchecker
 %{_datadir}/linkchecker/linkcheckerrc
+%dir %{_datadir}/linkchecker/examples
 %{_datadir}/linkchecker/examples/leer.html.en
-%{_datadir}/linkchecker/examples/leer.html.de
+%lang(de) %{_datadir}/linkchecker/examples/leer.html.de
 %{_datadir}/linkchecker/examples/index.html
 %{_datadir}/linkchecker/examples/lc_cgi.html.en
-%{_datadir}/linkchecker/examples/lc_cgi.html.de
+%lang(de) %{_datadir}/linkchecker/examples/lc_cgi.html.de
 %{_datadir}/linkchecker/examples/check.js
 %{_datadir}/linkchecker/examples/lc.cgi
 %{_datadir}/linkchecker/examples/lc.fcgi
@@ -174,4 +202,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/linkchecker/examples/linkchecker.bat
 %{_datadir}/linkchecker/examples/linkchecker-completion
 %{_datadir}/linkchecker/examples/linkcheck-cron.sh
-%{_mandir}/man1/linkchecker.1.gz
+%{_mandir}/man1/linkchecker.1*
