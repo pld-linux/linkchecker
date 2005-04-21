@@ -8,6 +8,7 @@ Group:		Applications/Networking
 Source0:	http://dl.sourceforge.net/linkchecker/%{name}-%{version}.tar.gz
 # Source0-md5:	6a40d830781507fc6b70d3f2d4d381ec
 URL:		http://linkchecker.sourceforge.net/
+BuildRequires:	python-devel
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
