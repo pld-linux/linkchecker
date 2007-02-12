@@ -1,5 +1,5 @@
 Summary:	Check HTML documents for broken links
-Summary(pl):	Sprawdzanie dokumentÛw HTML pod k±tem zerwanych odno∂nikÛw
+Summary(pl.UTF-8):   Sprawdzanie dokument√≥w HTML pod kƒÖtem zerwanych odno≈õnik√≥w
 Name:		linkchecker
 Version:	1.12.3
 Release:	1
@@ -30,23 +30,23 @@ Linkchecker features:
 - a command line interface
 - a (Fast)CGI web interface (requires HTTP server)
 
-%description -l pl
+%description -l pl.UTF-8
 Cechy linkcheckera:
 - sprawdzanie rekurencyjne
-- wielow±tkowo∂Ê
-- wyj∂cie w kolorowanym lub zwyk≥ym tek∂cie, HTML-u, SQL-u, CSV lub
+- wielowƒÖtkowo≈õƒá
+- wyj≈õcie w kolorowanym lub zwyk≈Çym tek≈õcie, HTML-u, SQL-u, CSV lub
   jako mapa serwisu w GML-u lub XML-u
-- obs≥uga odno∂nikÛw HTTP/1.1, HTTPS, FTP, mailto:, news:, nntp:,
-  Gopher, Telnet i lokalnych plikÛw
-- restrykcje sprawdzania odno∂nikÛw przy pomocy filtrÛw URL-i opartych
-  o wyraøenia regularne
-- obs≥uga proxy
-- autoryzacja uøytkownik/has≥o dla HTTP i FTP
-- obs≥uga protoko≥u wy≥±czeÒ robots.txt
-- obs≥uga ciasteczek
-- obs≥uga wielu jÍzykÛw (i18n)
-- interfejs z linii poleceÒ
-- interfejs WWW (Fast)CGI (wymagaj±cy serwera HTTP)
+- obs≈Çuga odno≈õnik√≥w HTTP/1.1, HTTPS, FTP, mailto:, news:, nntp:,
+  Gopher, Telnet i lokalnych plik√≥w
+- restrykcje sprawdzania odno≈õnik√≥w przy pomocy filtr√≥w URL-i opartych
+  o wyra≈ºenia regularne
+- obs≈Çuga proxy
+- autoryzacja u≈ºytkownik/has≈Ço dla HTTP i FTP
+- obs≈Çuga protoko≈Çu wy≈ÇƒÖcze≈Ñ robots.txt
+- obs≈Çuga ciasteczek
+- obs≈Çuga wielu jƒôzyk√≥w (i18n)
+- interfejs z linii polece≈Ñ
+- interfejs WWW (Fast)CGI (wymagajƒÖcy serwera HTTP)
 
 %prep
 %setup -q
