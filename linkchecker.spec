@@ -1,5 +1,5 @@
 Summary:	Check HTML documents for broken links
-Summary(pl.UTF-8):   Sprawdzanie dokumentów HTML pod kątem zerwanych odnośników
+Summary(pl.UTF-8):	Sprawdzanie dokumentów HTML pod kątem zerwanych odnośników
 Name:		linkchecker
 Version:	1.12.3
 Release:	1
