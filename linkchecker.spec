@@ -1,13 +1,14 @@
 Summary:	Check HTML documents for broken links
 Summary(pl.UTF-8):	Sprawdzanie dokumentów HTML pod kątem zerwanych odnośników
 Name:		linkchecker
-Version:	4.6
+Version:	4.8
 Release:	1
 License:	GPL
 Group:		Applications/Networking
 Source0:	http://dl.sourceforge.net/linkchecker/%{name}-%{version}.tar.gz
-# Source0-md5:	310a8fce39ef502687d4f6e0d771899d
+# Source0-md5:	0473839d4c263ffeb98dc44e59026339
 URL:		http://linkchecker.sourceforge.net/
+BuildRequires:	pydoc
 BuildRequires:	python-devel >= 1:2.5
 BuildRequires:	rpm-pythonprov
 %pyrequires_eq	python-libs
@@ -117,5 +118,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/linkchecker/examples/leer.html.en
 %{_datadir}/linkchecker/examples/linkchecker-completion
 %{_mandir}/man1/linkchecker.1*
+%{_mandir}/man5/linkcheckerrc.5*
 %lang(de) %{_mandir}/de/man1/linkchecker.1*
-%lang(fr) %{_mandir}/fr/man1/linkchecker.1*
+%lang(de) %{_mandir}/de/man5/linkcheckerrc.5*
